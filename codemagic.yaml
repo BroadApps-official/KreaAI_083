@@ -4,11 +4,11 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     integrations:
-      app_store_connect: KreaAI
+      app_store_connect: "KreaAI"
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.mek.calaifit
+        bundle_identifier: com.kyr.kreaaigen
       vars:
         BUNDLE_ID: "com.kyr.kreaaigen"
         XCODE_PROJECT: "KreaAI.xcworkspace"
