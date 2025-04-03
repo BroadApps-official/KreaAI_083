@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E68B47F12D9D20CB000A36BB /* ee.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E68B47F02D9D20CA000A36BB /* ee.storekit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E64AD3302D92A6BB0026FB0E /* KreaAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KreaAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68B47F02D9D20CA000A36BB /* ee.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ee.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E64AD45E2D92B2950026FB0E /* Exceptions for "KreaAI" folder in "KreaAI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E64AD32F2D92A6BB0026FB0E /* KreaAI */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E64AD3322D92A6BB0026FB0E /* KreaAI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E64AD45E2D92B2950026FB0E /* Exceptions for "KreaAI" folder in "KreaAI" target */,
+			);
 			path = KreaAI;
 			sourceTree = "<group>";
 		};
@@ -29,11 +47,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92D64E44FB40026ED6217869 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E64AD3272D92A6BB0026FB0E = {
 			isa = PBXGroup;
 			children = (
+				E68B47F02D9D20CA000A36BB /* ee.storekit */,
 				E64AD3322D92A6BB0026FB0E /* KreaAI */,
 				E64AD3312D92A6BB0026FB0E /* Products */,
+				92D64E44FB40026ED6217869 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,8 +91,6 @@
 				E64AD3322D92A6BB0026FB0E /* KreaAI */,
 			);
 			name = KreaAI;
-			packageProductDependencies = (
-			);
 			productName = KreaAI;
 			productReference = E64AD3302D92A6BB0026FB0E /* KreaAI.app */;
 			productType = "com.apple.product-type.application";
@@ -109,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68B47F12D9D20CB000A36BB /* ee.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,12 +280,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KreaAI/Preview Content\"";
 				DEVELOPMENT_TEAM = 8SAXL44577;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KreaAI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -283,12 +310,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KreaAI/Preview Content\"";
 				DEVELOPMENT_TEAM = 8SAXL44577;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KreaAI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
