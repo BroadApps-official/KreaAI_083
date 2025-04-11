@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct EffectListView: View {
     @StateObject private var viewModel = EffectViewModel(service: EffectService())
