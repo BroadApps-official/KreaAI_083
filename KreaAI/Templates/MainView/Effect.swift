@@ -31,38 +31,6 @@ struct EffectSection: Identifiable {
     let effects: [Effect]
 }
 
-protocol EffectServiceProtocol {
-    func fetchEffectSections(appId: String, userId: String) async throws -> [EffectSection]
-}
-
-class EffectService: EffectServiceProtocol {
-    private var manager = Manager.shared
-    private let baseURL = "https://futuretechapps.shop"
-    private let bearerToken = "0e9560af-ab3c-4480-8930-5b6c76b03eea"
-    
-    func fetchEffectSections(appId: String, userId: String) async throws -> [EffectSection] {
-        guard let url = URL(string: "\(baseURL)/filters?appId=\(appId)&userId=\(userId)") else {
-            throw URLError(.badURL)
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(manager.token)", forHTTPHeaderField: "Authorization")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
-        }
-        
-        let decoder = JSONDecoder()
-        let result = try decoder.decode(FilterResponse.self, from: data)
-        
-        let section = EffectSection(title: "Transformation", effects: result.data)
-        return [section]
-    }
-}
 
 struct FilterResponse: Codable {
     let error: Bool
@@ -345,67 +313,10 @@ struct GenerateData: Codable {
     let result: String?
 }
 
-// Обновленная структура GenerateResponse
 struct GenerateResponse: Codable {
     let error: Bool
     let messages: [String]
     let data: GenerateData
-}
-
-// EffectListView
-struct EffectListView: View {
-    @StateObject private var viewModel = EffectViewModel(service: EffectService())
-    
-    var body: some View {
-        ZStack {
-            Color(hex: "#161616").ignoresSafeArea()
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    if viewModel.isLoading {
-                        ProgressView("Loading...")
-                    } else if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    } else {
-                        ForEach(viewModel.sections) { section in
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(section.title)
-                                        .font(.custom("NanumMyeongjo", size: 20))
-                                        .fontWeight(.bold)
-                                        .padding(.leading, 16)
-                                    Spacer()
-                                    NavigationLink(destination: EffectGridView(section: section)) {
-                                        Text("See All")
-                                            .foregroundColor(.white)
-                                            .padding(.trailing, 16)
-                                            .font(.custom("NanumMyeongjo", size: 14))
-                                    }
-                                }
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 16) {
-                                        ForEach(section.effects) { effect in
-                                            NavigationLink(destination: EffectDetailView(effect: effect)) {
-                                                EffectCard(effect: effect)
-                                                    .frame(width: 120, height: 200)
-                                            }
-                                        }
-                                    }
-                                    .padding(.horizontal, 16)
-                                }
-                            }
-                        }
-                    }
-                }
-                .padding(.vertical)
-            }
-            .task {
-                await viewModel.fetchEffectSections()
-            }
-        }
-    }
 }
 
 struct EffectGridView: View {
@@ -416,7 +327,8 @@ struct EffectGridView: View {
             Color(hex: "#161616").ignoresSafeArea()
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                    ForEach(section.effects) { effect in
+                    // Filter out effects with name "Share a bad"
+                    ForEach(section.effects.filter { $0.name != "Share a bed" }) { effect in
                         NavigationLink(destination: EffectDetailView(effect: effect)) {
                             EffectCardd(effect: effect)
                         }
@@ -434,68 +346,6 @@ struct EffectGridView: View {
                         .foregroundColor(.white)
                 }
             }
-        }
-    }
-}
-
-struct EffectCard: View {
-    let effect: Effect
-    
-    var body: some View {
-        VStack {
-            if let url = URL(string: effect.previewSmall) {
-                VideoPlayer(player: AVPlayer(url: url))
-                    .frame(width: 120, height: 160)
-                    .scaledToFit()
-                    .disabled(true)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .onAppear {
-                        AVPlayer(url: url).play()
-                    }
-            } else {
-                Image(systemName: "video")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 160)
-                    .foregroundColor(.gray)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-            }
-            Text(effect.name)
-                .font(.caption)
-                .fontWeight(.medium)
-                .lineLimit(1)
-                .foregroundColor(.white)
-        }
-    }
-}
-
-struct EffectCardd: View {
-    let effect: Effect
-    
-    var body: some View {
-        VStack {
-            if let url = URL(string: effect.previewSmall) {
-                VideoPlayer(player: AVPlayer(url: url))
-                    .frame(width: 170, height: 180)
-                    .scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .disabled(true)
-                    .onAppear {
-                        AVPlayer(url: url).play()
-                    }
-            } else {
-                Image(systemName: "video")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 170, height: 180)
-                    .foregroundColor(.gray)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-            }
-            Text(effect.name)
-                .font(.caption)
-                .fontWeight(.medium)
-                .lineLimit(1)
-                .foregroundColor(.white)
         }
     }
 }
