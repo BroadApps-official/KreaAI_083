@@ -23,7 +23,8 @@ struct OnboardingStepView: View {
                 Image(step.imageName)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .offset(y: index == 3 ? -100 : 0)
+                    .frame(height: geometry.size.height * 0.4)
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing: 0) {

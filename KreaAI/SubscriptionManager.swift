@@ -14,7 +14,6 @@ class SubscriptionManager: ObservableObject {
     
     init() {
         hasSubscription = Apphud.hasActiveSubscription()
-        hasSubscription = true
     }
     
     @MainActor func checkSubscriptionStatus() async {
@@ -22,7 +21,6 @@ class SubscriptionManager: ObservableObject {
         if let subscriptions = Apphud.subscriptions() {
             hasSubscription = !subscriptions.isEmpty
         }
-        hasSubscription = true
         print("Subscription status: \(hasSubscription)")
         isLoading = false
     }

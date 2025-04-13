@@ -25,10 +25,8 @@ struct SettingsView: View {
                 List {
                     Section {
                         Button(action: {
-                            if !subscriptionManager.hasSubscription {
                                 impactFeedback.impactOccurred()
                                 showSubscription = true
-                            }
                         }) {
                             HStack {
                                 Image(systemName: "crown")
