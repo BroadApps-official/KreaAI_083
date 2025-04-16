@@ -103,7 +103,7 @@ struct SettingsView: View {
                             }
                             .foregroundColor(.white)
                         }
-                        .sheet(isPresented: $showPrivacyPolicy) {
+                        .fullScreenCover(isPresented: $showPrivacyPolicy) {
                             PrivacyPolicyView()
                         }
                         
@@ -119,7 +119,7 @@ struct SettingsView: View {
                             }
                             .foregroundColor(.white)
                         }
-                        .sheet(isPresented: $showTermsAndConditions) {
+                        .fullScreenCover(isPresented: $showTermsAndConditions) {
                             TermsAndConditionsView()
                         }
                         
@@ -135,7 +135,7 @@ struct SettingsView: View {
                             }
                             .foregroundColor(.white)
                         }
-                        .sheet(isPresented: $showSupport) {
+                        .fullScreenCover(isPresented: $showSupport) {
                             ContactView()
                         }
                     }

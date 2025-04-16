@@ -284,7 +284,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KreaAI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crea-clip";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to allow you to take photos and upload them to our server for creating videos with special effects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We don’t store user information, especially not on our server. We need camera access to let you take photos and upload them to our server for creating videos with special effects.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you, improve the app, and track subscriptions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -322,7 +322,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KreaAI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crea-clip";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to allow you to take photos and upload them to our server for creating videos with special effects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We don’t store user information, especially not on our server. We need camera access to let you take photos and upload them to our server for creating videos with special effects.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you, improve the app, and track subscriptions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
